@@ -1,4 +1,4 @@
-const { output, car, category } = require("../models");
+const { output, car, category, report } = require("../models");
 
 class OutputController {
   static async getOutput(req, res) {
@@ -29,10 +29,20 @@ class OutputController {
   static async createOutputStock(req, res) {
     try {
       const { carId, total } = req.body;
-      let resultInput = await output.create({
+      let resultOutput = await output.create({
         carId: carId,
 
         total: total,
+      });
+
+      let outputId = resultOutput.dataValues.id;
+      // console.log(outputId);
+      let inputId = null;
+
+      let createReport = await report.create({
+        inputId,
+        outputId,
+        carId,
       });
 
       let findOneCar = await car.findByPk(carId);
@@ -48,7 +58,7 @@ class OutputController {
         { where: { id: carId } }
       );
 
-      res.json(resultInput);
+      res.json(resultOutput);
     } catch (err) {
       res.json(err);
     }

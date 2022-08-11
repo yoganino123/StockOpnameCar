@@ -1,4 +1,4 @@
-const { input, category, car } = require("../models");
+const { input, category, car, report } = require("../models");
 
 class InputController {
   static async getInput(req, res) {
@@ -30,11 +30,22 @@ class InputController {
     try {
       const { carId, categoryId, total } = req.body;
       let resultInput = await input.create({
-        carId: carId,
-        categoryId: categoryId,
-        total: total,
+        carId,
+        categoryId,
+        total,
       });
+      let inputId = resultInput.dataValues.id;
+      // console.log(inputId);
+      let outputId = null;
 
+      let createReport = await report.create({
+        inputId,
+        outputId,
+        carId,
+      });
+      // console.log(createReport);
+
+      // get old stock
       let findOneCar = await car.findByPk(carId);
       let oldStockCar = findOneCar.dataValues.stock;
 

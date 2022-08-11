@@ -7,5 +7,6 @@ carRoutes.post("/add", CarController.create);
 carRoutes.get("/delete/:id", CarController.delete);
 carRoutes.get("/update/:id", CarController.updatePage);
 carRoutes.post("/update/:id", CarController.update);
+carRoutes.get("/:id/reports", CarController.getAllReports);
 
 module.exports = carRoutes;

@@ -1,4 +1,4 @@
-const { car, category } = require("../models");
+const { car, category, input, output, report } = require("../models");
 
 class CarController {
   static async getCar(req, res) {
@@ -91,6 +91,21 @@ class CarController {
           message: `Car can't be updated`,
         });
       }
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  static async getAllReports(req, res) {
+    try {
+      const { id } = req.params;
+      let get = await report.findAll({
+        where: {
+          carId: id,
+        },
+        include: [car],
+      });
+      console.log(get);
     } catch (err) {
       res.json(err);
     }
