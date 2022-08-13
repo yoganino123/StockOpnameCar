@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Opname Car</title>
+    <%- include('../addOn/link.ejs') %>
+
+</head>
+<body>
+     <!-- Navbar -->
+     <%- include('../addOn/navbar') %>
+
+     <!-- Title -->
+    <div class="container-fluid p-3 bg-black text-white text-center">
+        <h1>Car Inventory</h1>
+    </div>
+
+    <div class="container mt-5 ">
+      <div class="row">
+  
+        <div class="col text-center">
+          <a href="/car/add" class="btn btn-primary">
+              <h3>+ Add New Car</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class=""col-12 my-2>
+    </br>
+        <table class = "table table-bordered text-center container">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Transmisi</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cars.forEach(car => { %>
+                <tr>
+                   
+                    <td class="text-center"><%= car.id %></td>
+                    <td class="text-center"><%= car.name %></td>
+                    <td class="text-center"><%= car.category ? car.category.name : "-" %></td>
+                    <td class="text-center"><%= car.transmisi %></td>
+                    <td class="text-center"><%= car.year %></td>
+                    <td class="text-center"><%= car.price %></td>
+                    <td class="text-center"><%= car.stock %></td>
+                    <td class="text-center">
+                        <a  class="btn btn-outline-success" href="/input/addStock/<%=car.id%>">+ Stock In</a>
+                        <a  class="btn btn-outline-primary" href="/car/update/<%=car.id%>">Edit</a>
+                        <a  class="btn btn-outline-danger" href="/output/addOutput/<%=car.id%>">- Stock Out</a>
+                    </td>
+                </tr>
+                <% })%>
+            </tbody>
+
+        </table>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+  <%- include('../addOn/script.ejs') %>
+</body>
+</html>

@@ -1,0 +1,514 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Stock-Opname-Car",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/car": {
+      "get": {
+        "summary": "localhost:3000/car",
+        "tags": [
+          "car"
+        ],
+        "operationId": "localhost:3000/car",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/car/add": {
+      "post": {
+        "summary": "localhost:3000/car/add",
+        "tags": [
+          "car"
+        ],
+        "operationId": "localhost:3000/car/add",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/car/update/2": {
+      "post": {
+        "summary": "localhost:3000/car/update/2",
+        "tags": [
+          "car"
+        ],
+        "operationId": "localhost:3000/car/update/2",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "categoryId",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "cc",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "transmisi",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "year",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "stock",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/car/delete/1": {
+      "get": {
+        "summary": "localhost:3000/car/delete/1",
+        "tags": [
+          "car"
+        ],
+        "operationId": "localhost:3000/car/delete/1",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/car/2/reports": {
+      "get": {
+        "summary": "localhost:3000/car/2/reports",
+        "tags": [
+          "car"
+        ],
+        "operationId": "localhost:3000/car/2/reports",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/category": {
+      "get": {
+        "summary": "localhost:3000/category",
+        "tags": [
+          "category"
+        ],
+        "operationId": "localhost:3000/category",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/category/add": {
+      "post": {
+        "summary": "localhost:3000/category/add",
+        "tags": [
+          "category"
+        ],
+        "operationId": "localhost:3000/category/add",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/category/update/2": {
+      "post": {
+        "summary": "localhost:3000/category/update/2",
+        "tags": [
+          "category"
+        ],
+        "operationId": "localhost:3000/category/update/2",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/category/delete/3": {
+      "get": {
+        "summary": "localhost:3000/category/delete/3",
+        "tags": [
+          "category"
+        ],
+        "operationId": "localhost:3000/category/delete/3",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/input": {
+      "get": {
+        "summary": "localhost:3000/input",
+        "tags": [
+          "input"
+        ],
+        "operationId": "localhost:3000/input",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/input/addStock": {
+      "post": {
+        "summary": "localhost:3000/input/addStock",
+        "tags": [
+          "input"
+        ],
+        "operationId": "localhost:3000/input/addStock",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "total",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/input/delete/29": {
+      "get": {
+        "summary": "localhost:3000/category/delete/3 Copy",
+        "tags": [
+          "input"
+        ],
+        "operationId": "localhost:3000/category/delete/3Copy",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/output": {
+      "get": {
+        "summary": "localhost:3000/output",
+        "tags": [
+          "output"
+        ],
+        "operationId": "localhost:3000/output",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/output/addOutput": {
+      "post": {
+        "summary": "localhost:3000/output/addOutput",
+        "tags": [
+          "output"
+        ],
+        "operationId": "localhost:3000/output/addOutput",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "carId",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "total",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/output/delete/5": {
+      "get": {
+        "summary": "localhost:3000/output/delete/1",
+        "tags": [
+          "output"
+        ],
+        "operationId": "localhost:3000/output/delete/1",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/report": {
+      "get": {
+        "summary": "localhost:3000/report",
+        "tags": [
+          "report"
+        ],
+        "operationId": "localhost:3000/report",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "localhost:3000",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "localhost:3000",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "car"
+    },
+    {
+      "name": "category"
+    },
+    {
+      "name": "input"
+    },
+    {
+      "name": "output"
+    },
+    {
+      "name": "report"
+    },
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Opname Car</title>
+    <%- include('../addOn/link.ejs') %>
+
+</head>
+<body>
+     <!-- Navbar -->
+     <%- include('../addOn/navbar') %>
+
+     <!-- Title -->
+    <div class="container-fluid p-3 bg-black text-white text-center">
+        <h1>Report Stock Out</h1>
+    </div>
+</br>
+
+   
+
+    <div class="container"col-12 my-2>
+        <h3>Report Stock Out</h3>
+    </br>
+        <table class = "table table-bordered text-center container">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Car</th>
+                    <th>Stock out</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% outputs.forEach(output => { %>
+                    
+                <tr>
+                   
+                    <td class="text-center"><%= output.id %> </td>
+                    <td class="text-center"><%= output.car.name%></td>
+                    <td class="text-center"><%= output.total %></td>
+                    <td class="text-center"><%= output.updatedAt%></td>
+                    <td class="text-center">
+                        <a  class="btn btn-outline-danger" href="/output/delete/<%=output.id%>">Delete</a>
+                    </td>
+                </tr>
+                <%})%>
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    
+    
+    
+
+  <%- include('../addOn/script.ejs') %>
+</body>
+</html>

@@ -11,9 +11,6 @@ module.exports = {
       carId: {
         type: Sequelize.INTEGER
       },
-      categoryId: {
-        type: Sequelize.INTEGER
-      },
       total: {
         type: Sequelize.INTEGER
       },

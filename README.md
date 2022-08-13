@@ -8,7 +8,7 @@ Category
 npx sequelize-cli model:generate --name category --attributes name:string
 
 Input
-npx sequelize-cli model:generate --name input --attributes carId:integer,categoryId:integer,total:integer
+npx sequelize-cli model:generate --name input --attributes carId:integer,total:integer
 
 Output
 npx sequelize-cli model:generate --name output --attributes carId:integer,total:integer

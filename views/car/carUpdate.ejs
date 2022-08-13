@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Opname Car</title>
+    <%- include('../addOn/link.ejs') %>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('../addOn/navbar') %>
+
+    <!-- Title -->
+   <div class="container-fluid p-3 bg-black text-white text-center">
+       <h1>Car Inventory Update</h1>
+   </div>
+
+   <!-- Form -->
+  
+   <div class = "form-main container"> 
+    <center>
+    <form action="/car/update/<%= cars.id %> " method="post" > 
+    </br>
+
+     <div class="form-group">
+         <label for="">Name</label>    
+         <input type="text" name="name" value="<%= cars.name %>" class="form-control  " >
+     </div>
+    </br>
+    <div class="form-group">
+        <label for="">Category ID</label>
+        <select type="text" name="categoryId"  class="form-select   " >
+            <option value = "<%= cars.category.id %>"><%= cars.category.name %></option>
+            <% categories.forEach(category =>{ %>
+            <option value="<%= category.id%>"><%= category.id%>. <%= category.name%></option>
+            <% }) %>
+            
+            
+        </select>
+    </div>
+   </br>
+
+   
+</br>
+
+
+
+     <div class="form-group">
+         <label for="">Transmisi</label>    
+         <select type="text" name="transmisi" value="<%= cars.transmisi %>" class="form-select ">
+         <option value="Automatic">Automatic</option>
+         <option value="Manual">Manual</option>
+         </select>
+     </div>
+    </br>
+
+     <div class="form-group">
+         <label for="">Year</label>    
+         <input type="text" name="year" value="<%= cars.year %>" class="form-control ">
+     </div>
+    </br>
+
+     <div class="form-group">
+        <label for="">Price</label>    
+        <input type="text" name="price" value="<%= cars.price %>" class="form-control ">
+    </div>
+    </br>
+
+    <div class="form-group">
+        <label for="">Stock</label>    
+        <input type="text" name="stock" value="<%= cars.stock %>" class="form-control ">
+    </div>
+    </br>
+
+     <div class="form-group">
+         <button type = "submit">SUBMIT</button>
+     </div>
+    </br>
+
+     
+    </form>
+</center>
+   
+ </div>
+
+    
+  <%- include('../addOn/script.ejs') %>
+</body>
+</html>

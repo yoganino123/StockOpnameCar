@@ -12,15 +12,26 @@ class OutputController {
         ],
       });
 
-      res.json(outputs);
-      //   res.render("fruits/fruits.ejs", { fruits });
+      // res.json(outputs);
+      res.render("output/output.ejs", { outputs });
     } catch (err) {
       res.json(err);
     }
   }
 
-  static async createPage(req, res) {
+  static async createPageOutput(req, res) {
     try {
+      const { id } = req.params;
+      const cars = await car.findByPk(id, {
+        include: [category],
+      });
+      const categories = await category.findAll();
+
+      // console.log(cars);
+
+      // res.json(cars);
+      // console.log(cars);
+      res.render("output/outputStock.ejs", { cars, categories });
     } catch (err) {
       res.json(err);
     }
@@ -28,24 +39,28 @@ class OutputController {
 
   static async createOutputStock(req, res) {
     try {
-      const { carId, total } = req.body;
+      const { id } = req.params;
+      const { total } = req.body;
+      // create output
       let resultOutput = await output.create({
-        carId: carId,
-
-        total: total,
+        carId: id,
+        total,
       });
-
-      let outputId = resultOutput.dataValues.id;
+      // create report
+      let outputId = resultOutput.id;
       // console.log(outputId);
       let inputId = null;
 
       let createReport = await report.create({
         inputId,
         outputId,
-        carId,
+        carId: id,
       });
+      // console.log(createReport);
 
-      let findOneCar = await car.findByPk(carId);
+      // Menambah stock di inven car
+      // get old stock
+      let findOneCar = await car.findByPk(id);
       let oldStockCar = findOneCar.dataValues.stock;
 
       // console.log(findOneCar.dataValues);
@@ -55,10 +70,11 @@ class OutputController {
         {
           stock: Number(oldStockCar) - Number(total),
         },
-        { where: { id: carId } }
+        { where: { id: id } }
       );
 
-      res.json(resultOutput);
+      // res.json(resultInput);
+      res.redirect("/car/");
     } catch (err) {
       res.json(err);
     }
@@ -82,11 +98,13 @@ class OutputController {
       );
 
       let deleteData = await output.destroy({ where: { id } });
+      let deleteReport = await report.destroy({ where: { outputId: id } });
 
-      if (deleteData !== 0) {
-        res.json({
-          message: `Input with id ${id} has been deleted and stock ${getStock} has been deleted`,
-        });
+      if (deleteData !== 0 && deleteReport !== 0) {
+        // res.json({
+        //   message: `Input with id ${id} has been deleted!, stock ${getStock} has been deleted! and Report has been deleted`,
+        // });
+        res.redirect("/output");
       }
     } catch (err) {
       res.json(err);

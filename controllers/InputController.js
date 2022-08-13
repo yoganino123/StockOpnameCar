@@ -11,9 +11,8 @@ class InputController {
           },
         ],
       });
-
-      res.json(inputs);
-      //   res.render("fruits/fruits.ejs", { fruits });
+      // res.json(inputs);
+      res.render("input/input.ejs", { inputs });
     } catch (err) {
       res.json(err);
     }
@@ -21,6 +20,17 @@ class InputController {
 
   static async createPageStock(req, res) {
     try {
+      const { id } = req.params;
+      const cars = await car.findByPk(id, {
+        include: [category],
+      });
+      const categories = await category.findAll();
+
+      // console.log(cars);
+
+      // res.json(cars);
+      // console.log(cars);
+      res.render("input/inputStock.ejs", { cars, categories });
     } catch (err) {
       res.json(err);
     }
@@ -28,25 +38,28 @@ class InputController {
 
   static async createStock(req, res) {
     try {
-      const { carId, categoryId, total } = req.body;
+      const { id } = req.params;
+      const { total } = req.body;
+      // create input
       let resultInput = await input.create({
-        carId,
-        categoryId,
+        carId: id,
         total,
       });
-      let inputId = resultInput.dataValues.id;
+      // create report
+      let inputId = resultInput.id;
       // console.log(inputId);
       let outputId = null;
 
       let createReport = await report.create({
         inputId,
         outputId,
-        carId,
+        carId: id,
       });
       // console.log(createReport);
 
+      // Menambah stock di inven car
       // get old stock
-      let findOneCar = await car.findByPk(carId);
+      let findOneCar = await car.findByPk(id);
       let oldStockCar = findOneCar.dataValues.stock;
 
       // console.log(findOneCar.dataValues);
@@ -56,11 +69,11 @@ class InputController {
         {
           stock: Number(oldStockCar) + Number(total),
         },
-        { where: { id: carId } }
+        { where: { id: id } }
       );
 
-      res.json(resultInput);
-      //   res.redirect("/fruits");
+      // res.json(resultInput);
+      res.redirect("/car/");
     } catch (err) {
       res.json(err);
     }
@@ -84,12 +97,13 @@ class InputController {
       );
 
       let deleteData = await input.destroy({ where: { id } });
+      let deleteReport = await report.destroy({ where: { inputId: id } });
 
-      if (deleteData !== 0) {
-        res.json({
-          message: `Input with id ${id} has been deleted and stock ${getStock} has been deleted`,
-        });
-        // res.redirect("/fruits");
+      if (deleteData !== 0 && deleteReport !== 0) {
+        // res.json({
+        //   message: `Input with id ${id} has been deleted!, stock ${getStock} has been deleted, Report has been deleted `,
+        // });
+        res.redirect("/input");
       } else {
         res.json({ message: `Input can't be deleted` });
       }

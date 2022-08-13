@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      output.belongsTo(models.car, { foreignKey: "carId" });
+      output.belongsTo(models.car);
       output.belongsToMany(models.input, { through: models.report });
     }
   }
