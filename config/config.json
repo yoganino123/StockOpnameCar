@@ -1,9 +1,12 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "admin",
-    "database": "Stock_Opname_Car",
-    "host": "127.0.0.1",
+    "password": "0fe6218c91b30b08612f5a04a43433748d41e11109d6fa192a3169fdbab593d4",
+    // "username": "postgres",
+    "username": "naipplypjcijfg",
+    // "database": "Stock_Opname_Car",
+    "database": "d9v9pd3u4ksspf",
+    // "host": "127.0.0.1",
+    "host": "ec2-44-208-88-195.compute-1.amazonaws.com",
     "dialect": "postgres"
   },
   "test": {
